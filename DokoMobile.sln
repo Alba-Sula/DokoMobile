@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DokoMobile.WebUI", "DokoMobile.WebUI\DokoMobile.WebUI.csproj", "{8DD7881A-AE6F-44B3-9A38-79E063A62F7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DokoMobile.Domain", "DokoMobile.Domain\DokoMobile.Domain.csproj", "{C018D1FB-607A-40CC-B764-2BEC81010F2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DokoMobileUnitTests", "DokoMobileUnitTests\DokoMobileUnitTests.csproj", "{75CA73C2-B608-42AE-867C-B54AAE19B3F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DD7881A-AE6F-44B3-9A38-79E063A62F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD7881A-AE6F-44B3-9A38-79E063A62F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD7881A-AE6F-44B3-9A38-79E063A62F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD7881A-AE6F-44B3-9A38-79E063A62F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C018D1FB-607A-40CC-B764-2BEC81010F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C018D1FB-607A-40CC-B764-2BEC81010F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C018D1FB-607A-40CC-B764-2BEC81010F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C018D1FB-607A-40CC-B764-2BEC81010F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75CA73C2-B608-42AE-867C-B54AAE19B3F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75CA73C2-B608-42AE-867C-B54AAE19B3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75CA73C2-B608-42AE-867C-B54AAE19B3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75CA73C2-B608-42AE-867C-B54AAE19B3F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {810E015B-8FE5-4E22-80C4-1A62C669CA4D}
+	EndGlobalSection
+EndGlobal

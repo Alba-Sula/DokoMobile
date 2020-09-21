@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DokoMobile.Domain.Entities.OfferImg>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgPath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandAndName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src=@item.ImgPath width="100" height="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandAndName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OfferImgID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OfferImgID })
+            </td>
+        </tr>
+    }
+
+</table>
