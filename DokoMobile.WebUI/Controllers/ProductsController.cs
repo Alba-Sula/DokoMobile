@@ -64,8 +64,7 @@ namespace DokoMobile.WebUI.Controllers
         public string DbPath(HttpPostedFileBase file)
         {
             string fileName = Path.GetFileName(file.FileName);
-            string extention = Path.GetExtension(file.FileName);
-            fileName = "dokoMobile-" + fileName + extention;
+            fileName = "dokoMobile-" + fileName;
             string fileNameSave = Path.Combine(Server.MapPath("~/Images/"), fileName);
             file.SaveAs(fileNameSave);
             return "/Images/" + fileName;

@@ -17,7 +17,7 @@ namespace DokoMobileUnitTests
             Mock<IRepository> mock = new Mock<IRepository>();
             mock.Setup(p => p.Products).Returns(new Product[]
             {
-                new Product(){ProductId = 1, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
+                new Product(){ProductId = 1, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2,},
             });
             ProductsController controller = new ProductsController(mock.Object);
 
@@ -36,9 +36,9 @@ namespace DokoMobileUnitTests
             Mock<IRepository> mock = new Mock<IRepository>();
             mock.Setup(c => c.Products).Returns(new Product[]
             {
-                 new Product(){ProductId = 1, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 2, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 3, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
+                 new Product(){ProductId = 1, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
+                 new Product(){ProductId = 2, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
+                 new Product(){ProductId = 3, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
             });
 
             //---Arrange---
@@ -62,9 +62,9 @@ namespace DokoMobileUnitTests
             Mock<IRepository> mock = new Mock<IRepository>();
             mock.Setup(c => c.Products).Returns(new Product[]
             {
-                 new Product(){ProductId = 1, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 2, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 3, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
+                 new Product(){ProductId = 1, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
+                 new Product(){ProductId = 2, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
+                 new Product(){ProductId = 3, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
             });
             ProductsController controller = new ProductsController(mock.Object);
             //---Action---
@@ -84,15 +84,15 @@ namespace DokoMobileUnitTests
             Mock<IRepository> mock = new Mock<IRepository>();
             mock.Setup(c => c.Products).Returns(new Product[]
             {
-                 new Product(){ProductId = 1, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 2, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 3, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
+                 new Product(){ProductId = 1, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
+                 new Product(){ProductId = 2, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
+                 new Product(){ProductId = 3, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
             });
             ProductsController controller = new ProductsController(mock.Object);
-            Product product = new Product() { ProductId = 4, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color = "Blue", ProductCondition = "Very good", Description = "Desc", Price = 23.2, SpecsId = 1 };
+            Product product = new Product() { ProductId = 4, Name = "Alba", BrandId = 1, CategoryId = 1, Color = "Blue", ProductCondition = "Very good", Description = "Desc", Price = 23.2, };
 
             //---Act---
-            ActionResult result = controller.Edit(product);
+            ActionResult result = controller.Edit(product.ProductId);
 
             //---Assert---
             mock.Verify(m => m.SaveProducts(product));
@@ -106,16 +106,16 @@ namespace DokoMobileUnitTests
             Mock<IRepository> mock = new Mock<IRepository>();
             mock.Setup(c => c.Products).Returns(new Product[]
             {
-                 new Product(){ProductId = 1, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 2, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 3, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
+                 new Product(){ProductId = 1, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
+                 new Product(){ProductId = 2, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2,},
+                 new Product(){ProductId = 3, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
             });
             ProductsController controller = new ProductsController(mock.Object);
-            Product product = new Product() { ProductId = 4, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color = "Blue", ProductCondition = "Very good", Description = "Desc", Price = 23.2, SpecsId = 1 };
+            Product product = new Product() { ProductId = 4, Name = "Alba", BrandId = 1, CategoryId = 1, Color = "Blue", ProductCondition = "Very good", Description = "Desc", Price = 23.2,};
             controller.ModelState.AddModelError("error", "error");
 
             //---Act---
-            ActionResult result = controller.Edit(product);
+            ActionResult result = controller.Edit(product.ProductId);
 
             //---Assert---
             mock.Verify(m => m.SaveProducts(It.IsAny<Product>()), Times.Never());
@@ -126,13 +126,13 @@ namespace DokoMobileUnitTests
         public void Can_Delete_Valid_Category()
         {
             //---Arrange---
-            Product product = new Product() { ProductId = 4, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color = "Blue", ProductCondition = "Very good", Description = "Desc", Price = 23.2, SpecsId = 1 };
+            Product product = new Product() { ProductId = 4, Name = "Alba", BrandId = 1, CategoryId = 1, Color = "Blue", ProductCondition = "Very good", Description = "Desc", Price = 23.2,  };
             Mock<IRepository> mock = new Mock<IRepository>();
             mock.Setup(c => c.Products).Returns(new Product[]
             {
-                 new Product(){ProductId = 1, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 2, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
-                 new Product(){ProductId = 3, Name = "Alba", BrandsId = 1, CategoriesId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, SpecsId=1 },
+                 new Product(){ProductId = 1, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2,},
+                 new Product(){ProductId = 2, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
+                 new Product(){ProductId = 3, Name = "Alba", BrandId = 1, CategoryId = 1, Color="Blue",ProductCondition="Very good", Description="Desc", Price = 23.2, },
                  product
             });
             ProductsController controller = new ProductsController(mock.Object);

@@ -56,6 +56,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Memory)
         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.RAM)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ImgPath1)
         </th>
@@ -118,6 +122,9 @@
             </th>
             <th>
                 @Html.DisplayFor(model => item.Memory)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.RAM)
             </th>
             <th>
                 <img src=@item.ImgPath1 width="100" height="100" />

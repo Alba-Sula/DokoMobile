@@ -2,33 +2,67 @@
 @{
     ViewBag.Title = "MainPage";
 }
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<main class="main-padding position-relative">
+    <h2>Doko Mobile</h2>
 
-<h2>MainPage</h2>
+    @* the carusel objects *@
 
-@* the carusel objects *@
+    <section class="carousel-container">
+        <section class="carousel-design">
+            <div class="carousel-items"><span class="product-name-carousel"></span><span class="product-price-carousel"></span></div>
+            <div class="carousel-items"><span class="product-name-carousel"></span><span class="product-price-carousel"></span></div>
+            @if (Model.OfferImgs.Any())
+            {
+                foreach (var item in Model.OfferImgs)
+                {
+                    <div class="carousel-items">
+                        <span class="product-name-carousel">@item.BrandAndName</span>
+                        <span class="product-price-carousel">@item.Price $</span>
+                        <img src=@item.ImgPath />
+                    </div>
 
-@if (Model.OfferImgs.Any())
-{
-    foreach (var item in Model.OfferImgs)
-    {
-        <p>@item.BrandAndName</p>
-        <p>@item.Price</p>
-        <img src=@item.ImgPath width="100" height="100" />
-
-    }
-}
-
+                }
+            }
+            <div class="carousel-items"><span class="product-name-carousel"></span><span class="product-price-carousel"></span></div>
+            <div class="carousel-items"><span class="product-name-carousel"></span><span class="product-price-carousel"></span></div>
+        </section>
+    </section>
+    <span id="prev">prev</span>
+    <span id="next">></span>
+</main>
+<section class="categories main-padding">
+    <h2 class="text-center">Cfare ne ofrojme</h2>
+    <div class="categories-design">
+        <a href="#">
+            <img src="~/StaticImages/mobile-phone.svg" />
+            <span>Smartphone</span>
+        </a>
+        <a href="#">
+            <img src="~/StaticImages/earbuds.svg" />
+            <span>Accesories</span>
+        </a>
+        <a href="#">
+            <img src="~/StaticImages/game-controller.svg" />
+            <span>Gaming</span>
+        </a>
+        <a href="#">
+            <img src="~/StaticImages/tools.svg" />
+            <span>Service</span>
+        </a>
+    </div>
+</section>
 @* the 20 products *@
 
-@foreach (var item in Model.Products)
-{
-    <p>Name: @item.Name</p>
-    <p>Brand: @item.Brands.BrandName</p>
-    <p>Price: @item.Price</p>
-    <img src=@item.ImgPath1 width="100" height="100" />
-    <p>Discount: @item.HasDiscount</p>
-}
-
+@*@foreach (var item in Model.Products)
+    {
+        <p>Name: @item.Name</p>
+        <p>Brand: @item.Brands.BrandName</p>
+        <p>Price: @item.Price</p>
+        <img src=@item.ImgPath1 width="100" height="100" />
+        <p>Discount: @item.HasDiscount</p>
+    }*@
+<script src="~/Scripts/carousel.js"></script>
 
 
 
