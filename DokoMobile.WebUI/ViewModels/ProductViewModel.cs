@@ -9,6 +9,10 @@ namespace DokoMobile.WebUI.ViewModels
 {
     public class ProductViewModel
     {
+        public ProductViewModel()
+        {
+            this.ProductAddedTime = DateTime.Now;
+        }
         public long ProductId { get; set; }
         public DateTime ProductAddedTime { get; set; }
         public string Name { get; set; }
