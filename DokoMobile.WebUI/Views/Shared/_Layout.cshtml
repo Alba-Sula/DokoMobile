@@ -12,7 +12,7 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-        <a class="navbar-brand" href="#">@Html.ActionLink("Doko Mobile", "List", "Products", new { area = "" }, new { @class = "navbar-brand" })</a>
+        <a class="navbar-brand" href="#">@Html.ActionLink("Doko Mobile", "MainPage", "Front", new { area = "" }, new { @class = "navbar-brand" })</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,13 +20,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    @Html.ActionLink("Categories", "List", "Categories")
+                    @Html.ActionLink("Categories", "List", "Categories", new { area = "Admin" }, new { })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Brands", "List", "Brands")
+                    @Html.ActionLink("BrandsNoAdmin", "List", "Brands", new { area = "Admin" }, new { })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Products", "List", "Products")
+                    @Html.ActionLink("Products", "List", "Products", new { area = "Admin" }, new { })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Products Offer", "Index", "OfferImg", new { area = "Admin" }, new { })
                 </li>
 
             </ul>

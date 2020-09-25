@@ -1,0 +1,113 @@
+﻿@model IEnumerable<DokoMobile.Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandId)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = "btn btn-primary" })
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DetailsModalLong">
+                    Details
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="DetailsModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Details for @item.Name</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Name:</strong> @item.Name</p>
+                                <p><strong>Year of production:</strong> @item.YearOfProduction</p>
+                                <p><strong>Product condition:</strong> @item.ProductCondition</p>
+                                <p><strong>Discount:</strong> @item.HasDiscount</p>
+                                <p><strong>Price:</strong> @item.Price Leke</p>
+                                <p><strong>Color:</strong> @item.Color</p>
+                                <p><strong>Description:</strong> @item.Description</p>
+                                <p><strong>Category:</strong> @item.Category.CategoryName</p>
+                                <p><strong>Brand:</strong> @item.Brands.BrandName</p>
+                                <p><strong>Display:</strong> @item.Display</p>
+                                <p><strong>RAM:</strong> @item.RAM</p>
+                                <p><strong>Processor:</strong> @item.Processor</p>
+                                <p><strong>Batery:</strong> @item.Batery</p>
+                                <p><strong>Operating system:</strong> @item.OS</p>
+                                <p><strong>Memory:</strong> @item.Memory</p>
+                                <img src=@item.ImgPath1 width="100" height="100" />
+                                <img src=@item.ImgPath2 width="100" height="100" />
+                                <img src=@item.ImgPath3 width="100" height="100" />
+                                <img src=@item.ImgPath4 width="100" height="100" />
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModalCenter-@item.ProductId">
+                    Delete
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="DeleteModalCenter-@item.ProductId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Delete product @item.Name
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

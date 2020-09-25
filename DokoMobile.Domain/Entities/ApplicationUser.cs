@@ -13,6 +13,7 @@ namespace DokoMobile.Domain.Entities
     public class ApplicationUser : IdentityUser
     {
         [Required(ErrorMessage = "Full Name is required")]
+        [Display(Name ="Full Name")]
         public string FullName { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

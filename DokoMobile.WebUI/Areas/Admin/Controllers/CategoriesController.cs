@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace DokoMobile.WebUI.Controllers
+namespace DokoMobile.WebUI.Areas.Admin.Controllers
 {
     public class CategoriesController : Controller
     {
@@ -47,8 +47,6 @@ namespace DokoMobile.WebUI.Controllers
             return View("Edit", new Category());
         }
 
-
-        [HttpPost]
         public ActionResult Delete(long id)
         {
             Category deletedCategory = repository.DeleteCategory(id);

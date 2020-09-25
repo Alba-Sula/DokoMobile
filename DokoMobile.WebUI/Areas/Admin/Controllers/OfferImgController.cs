@@ -1,12 +1,13 @@
 ﻿using DokoMobile.Domain.Abstract;
 using DokoMobile.Domain.Entities;
-using System.IO;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace DokoMobile.WebUI.Controllers
+namespace DokoMobile.WebUI.Areas.Admin.Controllers
 {
     public class OfferImgController : Controller
     {

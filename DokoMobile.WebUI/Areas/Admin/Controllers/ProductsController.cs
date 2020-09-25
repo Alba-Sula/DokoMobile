@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace DokoMobile.WebUI.Controllers
+namespace DokoMobile.WebUI.Areas.Admin.Controllers
 {
     public class ProductsController : Controller
     {

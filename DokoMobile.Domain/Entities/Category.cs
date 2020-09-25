@@ -10,7 +10,10 @@ namespace DokoMobile.Domain.Entities
     public class Category
     {
         [Key]
+        [Display(Name ="Category Id")]
         public long CategoryId { get; set; }
+        [Required(ErrorMessage ="Category name is required")]
+        [Display(Name ="Category Name")]
         public string CategoryName { get; set; }
     }
 }

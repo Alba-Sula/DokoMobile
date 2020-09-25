@@ -6,10 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace DokoMobile.WebUI.Controllers
+namespace DokoMobile.WebUI.Areas.Admin.Controllers
 {
     public class BrandsController : Controller
     {
+        // GET: Admin/Brandss
         private IRepository repository;
         public BrandsController(IRepository repository)
         {
@@ -46,7 +47,6 @@ namespace DokoMobile.WebUI.Controllers
             return View("Edit", new Brands());
         }
 
-        [HttpPost]
         public ActionResult Delete(long id)
         {
             Brands brand = repository.DeleteBrand(id);
