@@ -52,16 +52,27 @@
         </a>
     </div>
 </section>
-@* the 20 products *@
-
-@*@foreach (var item in Model.Products)
+<div class="row align-items-center" style="margin-left:250px">
+    @foreach (var item in Model.Products)
     {
-        <p>Name: @item.Name</p>
-        <p>Brand: @item.Brands.BrandName</p>
-        <p>Price: @item.Price</p>
-        <img src=@item.ImgPath1 width="100" height="100" />
-        <p>Discount: @item.HasDiscount</p>
-    }*@
+        <div class="col-md-3">
+
+            <p>Name: @item.Name</p>
+            <p>Brand: @item.Brands.BrandName</p>
+            <p>Price: @item.Price</p>
+            <img src=@item.ImgPath1 width="100" height="100" />
+            <p>Discount: @item.HasDiscount</p>
+            @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
+            {
+                @Html.Hidden("productId", item.ProductId)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-primary" value="Add to cart" />
+            }
+        </div>
+    }
+
+</div>
+
 <script src="~/Scripts/carousel.js"></script>
 
 

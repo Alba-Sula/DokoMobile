@@ -79,10 +79,12 @@
     <Compile Include="Concrete\EFRepository.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Brands.cs" />
+    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Concrete\ApplicationDbContext.cs" />
     <Compile Include="Entities\OfferImg.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Migrations\202009132216209_changingthedbschema.cs" />
     <Compile Include="Migrations\202009132216209_changingthedbschema.Designer.cs">
       <DependentUpon>202009132216209_changingthedbschema.cs</DependentUpon>

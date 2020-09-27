@@ -33,6 +33,11 @@
                 </li>
 
             </ul>
+            <div class="navbar-right">
+                @Html.ActionLink("Checkout", "Index", "Cart",
+                new { area = "Buy",returnUrl = Request.Url.PathAndQuery },
+                new { @class = "btn btn-default navbar-btn text-white" })
+            </div>
             @Html.Partial("_LoginPartial")
         </div>
     </nav>
