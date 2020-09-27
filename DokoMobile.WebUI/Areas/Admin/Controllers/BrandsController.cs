@@ -25,6 +25,7 @@ namespace DokoMobile.WebUI.Areas.Admin.Controllers
         public ActionResult Edit(long id)
         {
             Brands brand = repository.Brands.Where(b => b.BrandId == id).FirstOrDefault();
+            ViewBag.Categories = repository.Categories.ToList();
             return View(brand);
         }
 
@@ -44,6 +45,7 @@ namespace DokoMobile.WebUI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Categories = repository.Categories.ToList();
             return View("Edit", new Brands());
         }
 

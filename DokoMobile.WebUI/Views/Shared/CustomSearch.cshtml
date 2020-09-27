@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DokoMobile.Domain.Entities.Product>
+
+<p>hiiii custom search here</p>
+
+
+@foreach (var item in Model)
+{
+    <div>
+        <p>Name: @item.Name</p>
+        <p>Brand: @item.Brands.BrandName</p>
+        <p>Price: @item.Price</p>
+        <img src=@item.ImgPath1 width="100" height="100" />
+        <p>Discount: @item.HasDiscount</p>
+    </div>
+}

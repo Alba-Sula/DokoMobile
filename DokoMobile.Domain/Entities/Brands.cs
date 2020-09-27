@@ -10,10 +10,13 @@ namespace DokoMobile.Domain.Entities
     public class Brands
     {
         [Key]
-        [Display(Name ="Brand Id")]
+        [Display(Name = "Brand Id")]
         public long BrandId { get; set; }
-        [Required(ErrorMessage ="Brand name is required")]
-        [Display(Name ="Brand Name")]
+        [Required(ErrorMessage = "Brand name is required")]
+        [Display(Name = "Brand Name")]
         public string BrandName { get; set; }
+        [Required(ErrorMessage = "Category to which brand belongs is required")]
+        public long CategoryId { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

@@ -215,7 +215,9 @@
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\MainPgViewModel.cs" />
     <Compile Include="ViewModels\OfferImgViewModel.cs" />
+    <Compile Include="ViewModels\ProductDTViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datetimepicker.css" />
@@ -261,6 +263,7 @@
     <Content Include="Areas\Admin\Views\OfferImg\Index.cshtml" />
     <Content Include="Areas\Buy\Views\web.config" />
     <Content Include="Areas\Buy\Views\Cart\Index.cshtml" />
+    <Content Include="Areas\Buy\Views\Cart\Summary.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -268,6 +271,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -398,6 +403,13 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
+    <Content Include="Views\Shared\Search.cshtml" />
+    <Content Include="Views\Shared\CustomSearch.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Product.cshtml" />
+    <Content Include="Views\Front\Smartphone.cshtml" />
+    <Content Include="Views\Front\Accessories.cshtml" />
+    <Content Include="Views\Front\Gaming.cshtml" />
+    <Content Include="Views\Front\Services.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

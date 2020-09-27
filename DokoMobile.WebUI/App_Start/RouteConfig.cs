@@ -12,6 +12,11 @@ namespace DokoMobile.WebUI
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                name: "/",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Front", action = "MainPage" }
+                );
 
             routes.MapRoute(
                 name: "Default",

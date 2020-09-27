@@ -34,24 +34,26 @@
 <section class="categories main-padding">
     <h2 class="text-center">Cfare ne ofrojme</h2>
     <div class="categories-design">
-        <a href="#">
+        <a href="@Url.Action("Smartphone","Front")">
             <img src="~/StaticImages/mobile-phone.svg" />
             <span>Smartphone</span>
         </a>
-        <a href="#">
+        <a href="@Url.Action("Accessories","Front")">
             <img src="~/StaticImages/earbuds.svg" />
             <span>Accesories</span>
         </a>
-        <a href="#">
+        <a href="@Url.Action("Gaming","Front")">
             <img src="~/StaticImages/game-controller.svg" />
             <span>Gaming</span>
         </a>
-        <a href="#">
+        <a href="@Url.Action("Services","Front")">
             <img src="~/StaticImages/tools.svg" />
             <span>Service</span>
         </a>
     </div>
 </section>
+
+
 <div class="row align-items-center" style="margin-left:250px">
     @foreach (var item in Model.Products)
     {
@@ -72,6 +74,46 @@
     }
 
 </div>
+<tr>
+    <td colspan="9">
+        @{
+            int PrevPageNo = ViewBag.PageNo - 1;
+            if (PrevPageNo <= 0)
+            {
+                PrevPageNo = 1;
+            }
+
+            int NextPageNo = ViewBag.PageNo + 1;
+            if (NextPageNo > ViewBag.NoOfPages)
+            {
+                NextPageNo = ViewBag.NoOfPages;
+            }
+        }
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="/Front/MainPage?PageNo=@PrevPageNo">Prev</a>
+            </li>
+            @for (int i = 0; i < ViewBag.NoOfPages; i++)
+            {
+                if ((i + 1) == ViewBag.PageNo)
+                {
+                    <li class="page-item active">
+                        <a class="page-link" href="/Front/MainPage?PageNo=@(i + 1)">@( i + 1)</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="/Front/MainPage?PageNo=@(i + 1)">@( i + 1)</a>
+                    </li>
+                }
+            }
+            <li class="page-item">
+                <a class="page-link" href="/Front/MainPage?PageNo=@NextPageNo">Next</a>
+            </li>
+        </ul>
+    </td>
+</tr>
 
 <script src="~/Scripts/carousel.js"></script>
 

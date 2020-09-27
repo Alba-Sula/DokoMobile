@@ -8,5 +8,6 @@ namespace DokoMobile.Domain.Entities
 {
     class ShippingDetails
     {
+        public long ShippinDetailsId { get; set; }
     }
 }

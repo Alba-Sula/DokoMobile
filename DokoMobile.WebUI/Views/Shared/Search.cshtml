@@ -1,0 +1,114 @@
+﻿@model DokoMobile.WebUI.ViewModels.SearchViewModel
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<div class="row">
+    <div class="form-horizontal">
+        <div id="ajax-search-div">
+            @using (Ajax.BeginForm("CustomSearch", "Front",
+            new { },
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "ajax-search-replace",
+            }))
+            {
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label>Category</label>
+                        @Html.DropDownList("CategoryId", new SelectList(Model.Categories, "CategoryId", "CategoryName"), new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label>Brand</label>
+                        @Html.DropDownList("BrandId", new SelectList(Model.Brands, "BrandId", "BrandName"), new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label>Max Price</label>
+                        <input type="number" name="maxPrice" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label>Memory</label>
+                        <input type="number" name="searchMemory" />
+                    </div>
+                </div>
+                <input type="submit" name="Search" />
+            }
+
+        </div>
+
+    </div>
+    <div class="pull-right" id="ajax-search-replace">
+        @foreach (var item in Model.Products)
+        {
+            <div>
+
+                <p>Name: @item.Name</p>
+                <p>Brand: @item.Brands.BrandName</p>
+                <p>Price: @item.Price</p>
+                <img src=@item.ImgPath1 width="100" height="100" />
+                <p>Discount: @item.HasDiscount</p>
+                @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
+                {
+                    @Html.Hidden("productId", item.ProductId)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" class="btn btn-primary" value="Add to cart" />
+                }
+            </div>
+        }
+        <table>
+            <tr>
+                <td colspan="9">
+                    @{
+                        int PrevPageNo = Model.PageNo - 1;
+                        if (PrevPageNo <= 0)
+                        {
+                            PrevPageNo = 1;
+                        }
+
+                        int NextPageNo = Model.PageNo + 1;
+                        if (NextPageNo > Model.NoOfPages)
+                        {
+                            NextPageNo = Model.NoOfPages;
+                        }
+                    }
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="/Front/Search?PageNo=@PrevPageNo">Prev</a>
+                        </li>
+                        @for (int i = 0; i < Model.NoOfPages; i++)
+                        {
+                            if ((i + 1) == Model.PageNo)
+                            {
+                                <li class="page-item active">
+                                    <a class="page-link" href="/Front/Search?PageNo=@(i + 1)">@( i + 1)</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="/Front/Search?PageNo=@(i + 1)">@( i + 1)</a>
+                                </li>
+                            }
+                        }
+                        <li class="page-item">
+                            <a class="page-link" href="/Front/Search?PageNo=@NextPageNo">Next</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@section scripts
+{
+}

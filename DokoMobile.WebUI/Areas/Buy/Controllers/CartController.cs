@@ -54,6 +54,13 @@ namespace DokoMobile.WebUI.Areas.Buy.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
+        public PartialViewResult Summary()
+        {
+            Cart cart = GetCart();
+
+            return PartialView(cart);
+        }
+
         private Cart GetCart()
         {
             Cart cart = (Cart)Session["Cart"];

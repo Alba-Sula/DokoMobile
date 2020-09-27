@@ -109,6 +109,10 @@
     <Compile Include="Migrations\202009252044480_migr.Designer.cs">
       <DependentUpon>202009252044480_migr.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009270914179_changingbrands.cs" />
+    <Compile Include="Migrations\202009270914179_changingbrands.Designer.cs">
+      <DependentUpon>202009270914179_changingbrands.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DbMigrationsConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -134,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009252044480_migr.resx">
       <DependentUpon>202009252044480_migr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009270914179_changingbrands.resx">
+      <DependentUpon>202009270914179_changingbrands.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

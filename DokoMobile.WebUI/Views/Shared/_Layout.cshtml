@@ -19,28 +19,31 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    @Html.ActionLink("Categories", "List", "Categories", new { area = "Admin" }, new { })
+                <li>
+                    <form class="form-inline" action="/Front/Search">
+                        <input type="search" class="form-control mr-1" id="search" name="search" placeholder="Search" value="@ViewBag.search">
+                        <button type="submit" class="btn btn-primary">GO</button>
+                    </form>
                 </li>
-                <li class="nav-item">
-                    @Html.ActionLink("BrandsNoAdmin", "List", "Brands", new { area = "Admin" }, new { })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Products", "List", "Products", new { area = "Admin" }, new { })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Products Offer", "Index", "OfferImg", new { area = "Admin" }, new { })
-                </li>
+                @*<li class="nav-item active">
+                        @Html.ActionLink("Categories", "List", "Categories", new { area = "Admin" }, new { })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("BrandsNoAdmin", "List", "Brands", new { area = "Admin" }, new { })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Products", "List", "Products", new { area = "Admin" }, new { })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Products Offer", "Index", "OfferImg", new { area = "Admin" }, new { })
+                    </li>*@
 
             </ul>
-            <div class="navbar-right">
-                @Html.ActionLink("Checkout", "Index", "Cart",
-                new { area = "Buy",returnUrl = Request.Url.PathAndQuery },
-                new { @class = "btn btn-default navbar-btn text-white" })
-            </div>
+            @Html.Action("Summary", "Cart", new { area = "Buy" })
             @Html.Partial("_LoginPartial")
         </div>
     </nav>
+    @*@Html.Action("Search", "Front")*@
     <div>
         @RenderBody()
         <hr />

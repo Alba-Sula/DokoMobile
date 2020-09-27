@@ -27,6 +27,8 @@ namespace DokoMobile.WebUI.Areas.Admin.Controllers
         {
             Product product = repository.Products.Where(p => p.ProductId == id).FirstOrDefault();
             ProductViewModel productVM = ProductViewModel.ToProductViewModel(product);
+            ViewBag.Categories = repository.Categories.ToList();
+            ViewBag.Brands = repository.Brands.ToList();
             return View(productVM);
         }
 
@@ -72,6 +74,9 @@ namespace DokoMobile.WebUI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+
+            ViewBag.Categories = repository.Categories.ToList();
+            ViewBag.Brands = repository.Brands.ToList();
             return View("Edit", new ProductViewModel());
         }
 
