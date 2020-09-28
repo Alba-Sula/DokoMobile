@@ -25,6 +25,7 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 10;
 }
 
     .navigation .home-btn a {
@@ -80,9 +81,9 @@ textarea {
         cursor: pointer;
     }
 
-    .nav-action-btn {
-        display: flex;
-    }
+.nav-action-btn {
+    display: flex;
+}
 
 .action-btn {
     border-radius: 50%;
@@ -137,6 +138,68 @@ textarea {
     padding: 0 16%;
 }
 
+.page {
+    width: 100%;
+    -webkit-box-shadow: 0px -7px 5px 0px rgba(191,191,191,.3);
+    -moz-box-shadow: 0px -7px 5px 0px rgba(191,191,191,.3);
+    box-shadow: 0px -7px 5px 0px rgba(191,191,191,.3);
+    transition: all .6s ease-in-out;
+    will-change: transform;
+    position: relative;
+    z-index: 2;
+}
+
+.search-result {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+}
+
+.search-wrapper {
+    display: flex;
+    padding: 35px 0;
+}
+
+    .search-wrapper .search-form {
+        flex: 0 0 25%;
+        padding: 0 35px;
+        border-right: 1px solid rgba(225,225,225,1);
+    }
+
+        .search-wrapper .search-form .input-design {
+            width: 100%;
+            background-color: #f7f7f7;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+            .search-wrapper .search-form .input-design input, .search-wrapper .search-form .input-design select {
+                background-color: transparent;
+                border: unset;
+                border-bottom: 1px solid #333333;
+                padding: 10px 10px 10px 0;
+            }
+
+    .search-wrapper .searched-items-wrapper {
+        flex: 0 0 75%;
+        padding: 0 35px;
+        position: relative;
+        padding-bottom: 35px;
+    }
+
+.searched-items-wrapper .searched-items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 35px;
+}
+
+.searched-items .product-item {
+    box-shadow: unset;
+}
 
 .carousel-container {
     width: 100%;
@@ -429,7 +492,6 @@ textarea {
     }
 
 .grid-design {
-    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 35px;
@@ -483,7 +545,7 @@ textarea {
     width: 100%;
     padding: 35px 0;
     background-color: white;
-    margin: 0 auto 250px 0;
+    margin: 0 auto;
     -webkit-box-shadow: 0px 7px 5px 0px rgba(191,191,191,.3);
     -moz-box-shadow: 0px 7px 5px 0px rgba(191,191,191,.3);
     box-shadow: 0px 7px 5px 0px rgba(191,191,191,.3);
@@ -512,13 +574,20 @@ textarea {
         border-radius: 10px;
     }
 
+.social-links-cover {
+    width: 100%;
+    height: 250px;
+    background-color: transparent;
+    pointer-events: none;
+}
+
 .social-media {
     width: 100%;
     height: 250px;
     position: fixed;
     left: 0;
     bottom: 0;
-    z-index: -1;
+    z-index: -2;
     background-color: #f7f7f7;
     color: #333333;
     padding: 35px 0;

@@ -2,8 +2,8 @@ namespace DokoMobile.Domain.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
-    public partial class changingbrands : DbMigration
+    
+    public partial class changes : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,7 @@ namespace DokoMobile.Domain.Migrations
             CreateIndex("dbo.Brands", "CategoryId");
             AddForeignKey("dbo.Brands", "CategoryId", "dbo.Categories", "CategoryId", cascadeDelete: false);
         }
-
+        
         public override void Down()
         {
             DropForeignKey("dbo.Brands", "CategoryId", "dbo.Categories");

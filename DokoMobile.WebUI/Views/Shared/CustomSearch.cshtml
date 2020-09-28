@@ -1,15 +1,33 @@
 ﻿@model IEnumerable<DokoMobile.Domain.Entities.Product>
 
-<p>hiiii custom search here</p>
 
-
-@foreach (var item in Model)
+@if (!Model.Any())
 {
-    <div>
-        <p>Name: @item.Name</p>
-        <p>Brand: @item.Brands.BrandName</p>
-        <p>Price: @item.Price</p>
-        <img src=@item.ImgPath1 width="100" height="100" />
-        <p>Discount: @item.HasDiscount</p>
-    </div>
+    <p>There are no such products </p>
 }
+
+<div class="searched-items">
+    @foreach (var item in Model)
+    {
+
+        <div class="product-item">
+            <div class="product-item-img">
+                <img src=@item.ImgPath1 />
+            </div>
+            <div class="product-details">
+                <p class="product-name">@item.Name &nbsp; @item.Brands.BrandName</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="product-price">@item.Price $</p>
+                    @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
+                    {
+                        @Html.Hidden("productId", item.ProductId)
+                        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                        <input type="submit" class="btn btn-primary" value="Add to cart" />
+                    }
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+

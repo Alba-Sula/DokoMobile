@@ -2,8 +2,8 @@
 
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
-<div class="row">
-    <div class="form-horizontal">
+<div class="search-wrapper">
+    <div class="search-form">
         <div id="ajax-search-div">
             @using (Ajax.BeginForm("CustomSearch", "Front",
             new { },
@@ -15,55 +15,68 @@
             }))
             {
 
-                <div class="form-group">
-                    <div class="col-md-10">
+                <div class="input-design">
+                    <div class="d-flex flex-column">
                         <label>Category</label>
                         @Html.DropDownList("CategoryId", new SelectList(Model.Categories, "CategoryId", "CategoryName"), new { htmlAttributes = new { @class = "form-control" } })
 
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-10">
+                <div class="input-design">
+                    <div class="d-flex flex-column">
                         <label>Brand</label>
                         @Html.DropDownList("BrandId", new SelectList(Model.Brands, "BrandId", "BrandName"), new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-10">
+                <div class="input-design">
+                    <div class="d-flex flex-column">
                         <label>Max Price</label>
                         <input type="number" name="maxPrice" />
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-10">
+                <div class="input-design">
+                    <div class="d-flex flex-column">
                         <label>Memory</label>
                         <input type="number" name="searchMemory" />
                     </div>
                 </div>
-                <input type="submit" name="Search" />
+                <input type="submit" name="Search" value="Search" />
             }
 
         </div>
 
     </div>
-    <div class="pull-right" id="ajax-search-replace">
-        @foreach (var item in Model.Products)
+    <div class="searched-items-wrapper" id="ajax-search-replace">
+        @if (!Model.Products.Any())
         {
             <div>
-
-                <p>Name: @item.Name</p>
-                <p>Brand: @item.Brands.BrandName</p>
-                <p>Price: @item.Price</p>
-                <img src=@item.ImgPath1 width="100" height="100" />
-                <p>Discount: @item.HasDiscount</p>
-                @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
-                {
-                    @Html.Hidden("productId", item.ProductId)
-                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                    <input type="submit" class="btn btn-primary" value="Add to cart" />
-                }
+                <p>There aro no such products</p>
             </div>
         }
+        <div class="searched-items">
+            @foreach (var item in Model.Products)
+            {
+
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src=@item.ImgPath1 />
+                    </div>
+                    <div class="product-details">
+                        <p class="product-name">@item.Name &nbsp; @item.Brands.BrandName</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="product-price">@item.Price $</p>
+                            @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
+                            {
+                                @Html.Hidden("productId", item.ProductId)
+                                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                <input type="submit" class="btn btn-primary" value="Add to cart" />
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
         <table>
             <tr>
                 <td colspan="9">
