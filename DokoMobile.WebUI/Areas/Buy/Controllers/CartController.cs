@@ -20,6 +20,10 @@ namespace DokoMobile.WebUI.Areas.Buy.Controllers
 
         public ActionResult Index(string returnUrl)
         {
+            if (returnUrl == null)
+            {
+                returnUrl = "/";
+            }
             return View(new CartViewModel()
             {
                 Cart = GetCart(),
@@ -36,9 +40,8 @@ namespace DokoMobile.WebUI.Areas.Buy.Controllers
             {
                 GetCart().AddToCart(product, 1);
             }
-            //do not forget the return url to return in the page where u already made that add to cart thing
 
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction("Index", "Cart", returnUrl);
         }
 
         public ActionResult RemoveFromCart(long productId, string returnUrl)
@@ -49,10 +52,16 @@ namespace DokoMobile.WebUI.Areas.Buy.Controllers
             {
                 GetCart().RemoveCartLine(product);
             }
-            //do not forget the return url to return in the page where u already made that add to cart thing
 
             return RedirectToAction("Index", new { returnUrl });
         }
+
+        public ActionResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
+
+
 
         public PartialViewResult Summary()
         {

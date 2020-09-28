@@ -264,6 +264,7 @@
     <Content Include="Areas\Buy\Views\web.config" />
     <Content Include="Areas\Buy\Views\Cart\Index.cshtml" />
     <Content Include="Areas\Buy\Views\Cart\Summary.cshtml" />
+    <Content Include="Areas\Buy\Views\Cart\Checkout.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

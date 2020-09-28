@@ -1,12 +1,59 @@
 ﻿@model DokoMobile.Domain.Entities.Cart
 
-<div class="navbar-right">
-    @Html.ActionLink("Checkout", "Index", "Cart",
-    new { area = "Buy", returnUrl = Request.Url.PathAndQuery },
-    new { @class = "btn btn-default navbar-btn text-white" })
+<div class="action-btn">
+    <img src="~/StaticImages/cart-svg.svg" />
+    @Html.ActionLink("a", "Index", "Cart",
+    new { area = "Buy", returnUrl = Request.Url.PathAndQuery })
+    <span class="card-counter">@Model.Lines.Sum(x => x.Quantity)</span>
 </div>
-<div class="navbar-text navbar-right">
-    <b>Your cart:</b>
-    @Model.Lines.Sum(x => x.Quantity) item(s),
-    @Model.TotalValue().ToString("c")
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="navbar-right">
+        @Html.ActionLink("Checkout", "Index", "Cart",
+        new { area = "Buy", returnUrl = Request.Url.PathAndQuery },
+        new { @class = "btn btn-default navbar-btn text-white" })
+    </div>
+    <div class="navbar-text navbar-right">
+        <b>Your cart:</b>
+        @Model.Lines.Sum(x => x.Quantity) item(s),
+        @Model.TotalValue().ToString("c")
+    </div>*@

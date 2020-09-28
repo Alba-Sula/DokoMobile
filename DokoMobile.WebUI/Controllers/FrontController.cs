@@ -106,5 +106,6 @@ namespace DokoMobile.WebUI.Controllers
             //    .Where(p => p.Price < maxPrice);
             return PartialView("CustomSearch", products);
         }
+
     }
 }

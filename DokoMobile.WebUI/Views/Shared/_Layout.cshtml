@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
@@ -13,25 +13,26 @@
 <body>
     <nav class="navigation">
         <div class="home-btn">
-            <a href="#">Doko Mobile</a>
+            <a href="/Front/MainPage">Doko Mobile</a>
         </div>
         <div class="nav-search">
-            <input type="text" placeholder="Search Product" name="name" value="" />
-            <button>Search</button>
+            <form class="form-inline" action="/Front/Search">
+                <input type="text" placeholder="Search Product" name="search" value="@ViewBag.search" />
+                <button type="submit">Search</button>
+            </form>
         </div>
         <div class="nav-action-btn">
-            <div class="action-btn">
-                <img src="~/StaticImages/cart-svg.svg" />
-                @Html.ActionLink("a", "Index", "Cart",
-                new { area = "Buy", returnUrl = Request.Url.PathAndQuery })
-            <span class="card-counter">80</span>
-            </div>
+            @Html.Action("Summary", "Cart", new { area = "Buy" })
             <div class="action-btn">
                 <img src="~/StaticImages/user-svg.svg" />
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </nav>
+    <div>
+        @* Do not forget the search here its wonderfulllll *@
+        @*@Html.Action("Search", "Front")*@
+    </div>
     <div>
         @RenderBody()
     </div>
