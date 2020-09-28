@@ -29,6 +29,11 @@ namespace DokoMobile.Domain.Abstract
         string SaveOfferImgs(OfferImg offerImg);
         OfferImg DeleteOfferImg(int id);
 
+        //clicks
+        IEnumerable<ProductClick> Clicks { get; set; }
+        void SaveClick(long id);
+
+
         //identity
         IEnumerable<ApplicationUser> ApplicationUser { get; set; }
     }

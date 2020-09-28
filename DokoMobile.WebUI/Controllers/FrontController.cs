@@ -16,7 +16,6 @@ namespace DokoMobile.WebUI.Controllers
         {
             this.repository = repository;
         }
-
         public ActionResult MainPage(int PageNo = 1)
         {
             var caruselOffer = repository.OfferImgs;
@@ -62,6 +61,12 @@ namespace DokoMobile.WebUI.Controllers
             IEnumerable<Product> services = repository.Products.Where(p => p.Category.CategoryName == "Services").OrderBy(p => p.ProductAddedTime);
 
             return View(services);
+        }
+        public ActionResult ProductItem(long id)
+        {
+            Product dbProduct = repository.Products.Where(p => p.ProductId == id).FirstOrDefault();
+            repository.SaveClick(id);
+            return View(dbProduct);
         }
 
         public ActionResult Search(string search = "", int PageNo = 1)

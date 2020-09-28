@@ -17,6 +17,7 @@ namespace DokoMobile.Domain.Concrete
         public IEnumerable<Brands> Brands { get { return context.Brands; } set { } }
         public IEnumerable<Category> Categories { get { return context.Categories; } set { } }
         public IEnumerable<OfferImg> OfferImgs { get { return context.OfferImgs; } set { } }
+        public IEnumerable<ProductClick> Clicks { get { return context.Clicks; } set { } }
         public IEnumerable<ApplicationUser> ApplicationUser { get { return context.Users; } set { } }
 
 
@@ -96,19 +97,19 @@ namespace DokoMobile.Domain.Concrete
                     dbProduct.Price = product.Price;
                     dbProduct.Color = product.Color;
                     dbProduct.Description = product.Description;
-                    if(product.ImgPath1 != null)
+                    if (product.ImgPath1 != null)
                     {
                         dbProduct.ImgPath1 = product.ImgPath1;
                     }
-                    if(product.ImgPath1 != null)
+                    if (product.ImgPath1 != null)
                     {
                         dbProduct.ImgPath2 = product.ImgPath2;
                     }
-                    if(product.ImgPath1 != null)
+                    if (product.ImgPath1 != null)
                     {
                         dbProduct.ImgPath3 = product.ImgPath3;
                     }
-                    if(product.ImgPath1 != null)
+                    if (product.ImgPath1 != null)
                     {
                         dbProduct.ImgPath4 = product.ImgPath4;
                     }
@@ -169,6 +170,26 @@ namespace DokoMobile.Domain.Concrete
                 context.SaveChanges();
             }
             return offerImg;
+        }
+
+        //clicks
+        public void SaveClick(long id)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var todaysClicks = context.Clicks.Where(c => c.DateClicked > DateTime.Today && c.DateClicked <= DateTime.Now);
+            ProductClick productClick = todaysClicks.Where(p => p.ProductId == id).FirstOrDefault();
+            ProductClick click = new ProductClick();
+            if (productClick == null)
+            {
+                click.ClickCount = 1;
+                click.ProductId = id;
+                context.Clicks.Add(click);
+            }
+            else
+            {
+                productClick.ClickCount++;
+            }
+            context.SaveChanges();
         }
     }
 }
