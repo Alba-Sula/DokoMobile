@@ -3,22 +3,36 @@
     ViewBag.Title = "MainPage";
 }
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<main class="main-padding position-relative">
-    <h2>Doko Mobile</h2>
-
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<main class="position-relative">
+    @*<div class="new-arrival d-flex justify-content-center">
+            <h2>New Arrival</h2>
+        </div>*@
     @* the carusel objects *@
-
+    <section class="brands main-padding">
+        <h1 class="text-center">Doko Mobile Shop</h1>
+        <div class="brands-design">
+            <img src="~/StaticImages/more-svg.svg" class="more-dots" />
+            <img src="~/StaticImages/apple-svg.svg" class="smaller-icon"/>
+            <img src="~/StaticImages/samsung-svg.svg" />
+            <img src="~/StaticImages/playstation-svg.svg" class="smaller-icon"/>
+            <img src="~/StaticImages/vivo-svg.svg" />
+            <img src="~/StaticImages/more-svg.svg" class="more-dots" />
+        </div>
+    </section>
     <section class="carousel-container">
         <section class="carousel-design">
             <div class="carousel-items"><span class="product-name-carousel"></span><span class="product-price-carousel"></span></div>
-            <div class="carousel-items"><span class="product-name-carousel"></span><span class="product-price-carousel"></span></div>
+            <div class="carousel-items">
+                <span class="product-name-carousel"></span><span class="product-price-carousel"></span>
+            </div>
             @if (Model.OfferImgs.Any())
             {
                 foreach (var item in Model.OfferImgs)
                 {
                     <div class="carousel-items">
-                        <span class="product-name-carousel">@item.BrandAndName</span>
-                        <span class="product-price-carousel">@item.Price $</span>
+                        <span class="product-name-carousel">@*@item.BrandAndName*@</span>
+                        <span class="product-price-carousel">@*@item.Price $*@</span>
                         <img src=@item.ImgPath />
                     </div>
 
@@ -27,93 +41,87 @@
             <div class="carousel-items"><span class="product-name-carousel"></span><span class="product-price-carousel"></span></div>
             <div class="carousel-items"><span class="product-name-carousel"></span><span class="product-price-carousel"></span></div>
         </section>
+        <div class="prev-btn">
+            <img id="prev" src="~/StaticImages/left-arrow.svg" />
+        </div>
+        <div class="next-btn">
+            <img id="next" src="~/StaticImages/next.svg" />
+        </div>
     </section>
-    <span id="prev">prev</span>
-    <span id="next">></span>
 </main>
 <section class="categories main-padding">
-    <h2 class="text-center">Cfare ne ofrojme</h2>
+    <h2 class="text-center">What We Offer</h2>
     <div class="categories-design">
-        <a href="@Url.Action("Smartphone","Front")">
+        <a href="#">
             <img src="~/StaticImages/mobile-phone.svg" />
             <span>Smartphone</span>
         </a>
-        <a href="@Url.Action("Accessories","Front")">
+        <a href="#">
             <img src="~/StaticImages/earbuds.svg" />
             <span>Accesories</span>
         </a>
-        <a href="@Url.Action("Gaming","Front")">
+        <a href="#">
             <img src="~/StaticImages/game-controller.svg" />
             <span>Gaming</span>
         </a>
-        <a href="@Url.Action("Services","Front")">
+        <a href="#">
             <img src="~/StaticImages/tools.svg" />
             <span>Service</span>
         </a>
     </div>
 </section>
-
-
-<div class="row align-items-center" style="margin-left:250px">
-    @foreach (var item in Model.Products)
-    {
-        <div class="col-md-3">
-
-            <p>Name: @item.Name</p>
-            <p>Brand: @item.Brands.BrandName</p>
-            <p>Price: @item.Price</p>
-            <img src=@item.ImgPath1 width="100" height="100" />
-            <p>Discount: @item.HasDiscount</p>
-            @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
-            {
-                @Html.Hidden("productId", item.ProductId)
-                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                <input type="submit" class="btn btn-primary" value="Add to cart" />
-            }
+<section class="commercial">
+    <h2 class="text-center">Our Services</h2>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem 
+    aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+    eos qui ratione voluptatem sequi nesciunt.</p>
+    <div class="services">
+        <div>
+            <h3>Feel Safe</h3>
+            <img src="~/StaticImages/insurance-svg.svg" />
+            <p>Every product of ours is insured for at least one year so nothing can go wrong with your product.</p>
         </div>
-    }
+        <div>
+            <h3>Online Payments</h3>
+            <img src="~/StaticImages/paypal-svg.svg" />
+            <p>Paymnet is now possible through our website. All you need is a PayPal account. </p>
+        </div>
+        <div class="dark-commercial">
+            <h3>Delivery</h3>
+            <img src="~/StaticImages/deliver-svg.svg" />
+            <p>Every product is now closer to you than ever before with fast delivery within a day. </p>
+        </div>
+    </div>
+</section>
+<section class="generated-products">
+    <h2 class="text-center">
+        The Latest Products In Our Shop
+    </h2>
+    <div class="grid-design">
+        @foreach (var item in Model.Products)
+        {
+            <div class="product-item">
+                <div class="product-item-img">
+                    <img src=@item.ImgPath1 />
+                </div>
+                <div class="product-details">
+                    <p class="product-name">@item.Name &nbsp; @item.Brands.BrandName</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="product-price">@item.Price $</p>
+                        @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
+                        {
+                            @Html.Hidden("productId", item.ProductId)
+                            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                            <input type="submit" class="btn btn-primary" value="Add to cart" />
+                        }
+                    </div>
+                </div>
+            </div>
 
-</div>
-<tr>
-    <td colspan="9">
-        @{
-            int PrevPageNo = ViewBag.PageNo - 1;
-            if (PrevPageNo <= 0)
-            {
-                PrevPageNo = 1;
-            }
-
-            int NextPageNo = ViewBag.PageNo + 1;
-            if (NextPageNo > ViewBag.NoOfPages)
-            {
-                NextPageNo = ViewBag.NoOfPages;
-            }
         }
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="/Front/MainPage?PageNo=@PrevPageNo">Prev</a>
-            </li>
-            @for (int i = 0; i < ViewBag.NoOfPages; i++)
-            {
-                if ((i + 1) == ViewBag.PageNo)
-                {
-                    <li class="page-item active">
-                        <a class="page-link" href="/Front/MainPage?PageNo=@(i + 1)">@( i + 1)</a>
-                    </li>
-                }
-                else
-                {
-                    <li class="page-item">
-                        <a class="page-link" href="/Front/MainPage?PageNo=@(i + 1)">@( i + 1)</a>
-                    </li>
-                }
-            }
-            <li class="page-item">
-                <a class="page-link" href="/Front/MainPage?PageNo=@NextPageNo">Next</a>
-            </li>
-        </ul>
-    </td>
-</tr>
+    </div>
+</section>
 
 <script src="~/Scripts/carousel.js"></script>
 

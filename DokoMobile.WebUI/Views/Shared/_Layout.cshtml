@@ -11,47 +11,62 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-        <a class="navbar-brand" href="#">@Html.ActionLink("Doko Mobile", "MainPage", "Front", new { area = "" }, new { @class = "navbar-brand" })</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li>
-                    <form class="form-inline" action="/Front/Search">
-                        <input type="search" class="form-control mr-1" id="search" name="search" placeholder="Search" value="@ViewBag.search">
-                        <button type="submit" class="btn btn-primary">GO</button>
-                    </form>
-                </li>
-                @*<li class="nav-item active">
-                        @Html.ActionLink("Categories", "List", "Categories", new { area = "Admin" }, new { })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("BrandsNoAdmin", "List", "Brands", new { area = "Admin" }, new { })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Products", "List", "Products", new { area = "Admin" }, new { })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Products Offer", "Index", "OfferImg", new { area = "Admin" }, new { })
-                    </li>*@
-
-            </ul>
-            @Html.Action("Summary", "Cart", new { area = "Buy" })
-            @Html.Partial("_LoginPartial")
+    <nav class="navigation">
+        <div class="home-btn">
+            <a href="#">Doko Mobile</a>
+        </div>
+        <div class="nav-search">
+            <input type="text" placeholder="Search Product" name="name" value="" />
+            <button>Search</button>
+        </div>
+        <div class="nav-action-btn">
+            <div class="action-btn">
+                <img src="~/StaticImages/cart-svg.svg" />
+                @Html.ActionLink("a", "Index", "Cart",
+                new { area = "Buy", returnUrl = Request.Url.PathAndQuery })
+            <span class="card-counter">80</span>
+            </div>
+            <div class="action-btn">
+                <img src="~/StaticImages/user-svg.svg" />
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
     </nav>
-    @*@Html.Action("Search", "Front")*@
     <div>
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year</p>
-        </footer>
     </div>
-
+    <footer>
+        <div class="support">
+            <h2 class="text-center">Do You Need Anything ?</h2>
+            <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+                eos qui ratione voluptatem sequi nesciunt.
+            </p>
+            <div class="contact-adresse">
+                <h5>Rr. Teodor Keko</h5>
+                <h5>0660000001 / doko@gmail.com</h5>
+            </div>
+        </div>
+        <div class="social-media">
+            <h2>Follow Us</h2>
+            <div class="social-links">
+                <a href="#">
+                    <img src="~/StaticImages/youtube-svg.svg" />
+                </a>
+                <a href="#">
+                    <img src="~/StaticImages/insta-svg.svg" />
+                </a>
+                <a href="#">
+                    <img src="~/StaticImages/facebook-svg.svg" />
+                </a>
+                <a href="#">
+                    <img src="~/StaticImages/twitter-svg.svg" />
+                </a>
+            </div>
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

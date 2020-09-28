@@ -353,10 +353,26 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="StaticImages\apple-svg.svg" />
+    <Content Include="StaticImages\cart-svg.svg" />
+    <Content Include="StaticImages\deliver-svg.svg" />
     <Content Include="StaticImages\earbuds.svg" />
+    <Content Include="StaticImages\facebook-svg.svg" />
     <Content Include="StaticImages\game-controller.svg" />
+    <Content Include="StaticImages\insta-svg.svg" />
+    <Content Include="StaticImages\insurance-svg.svg" />
+    <Content Include="StaticImages\left-arrow.svg" />
     <Content Include="StaticImages\mobile-phone.svg" />
+    <Content Include="StaticImages\more-svg.svg" />
+    <Content Include="StaticImages\next.svg" />
+    <Content Include="StaticImages\paypal-svg.svg" />
+    <Content Include="StaticImages\playstation-svg.svg" />
+    <Content Include="StaticImages\samsung-svg.svg" />
     <Content Include="StaticImages\tools.svg" />
+    <Content Include="StaticImages\twitter-svg.svg" />
+    <Content Include="StaticImages\user-svg.svg" />
+    <Content Include="StaticImages\vivo-svg.svg" />
+    <Content Include="StaticImages\youtube-svg.svg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

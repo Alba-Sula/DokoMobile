@@ -96,6 +96,22 @@ namespace DokoMobile.Domain.Concrete
                     dbProduct.Price = product.Price;
                     dbProduct.Color = product.Color;
                     dbProduct.Description = product.Description;
+                    if(product.ImgPath1 != null)
+                    {
+                        dbProduct.ImgPath1 = product.ImgPath1;
+                    }
+                    if(product.ImgPath1 != null)
+                    {
+                        dbProduct.ImgPath2 = product.ImgPath2;
+                    }
+                    if(product.ImgPath1 != null)
+                    {
+                        dbProduct.ImgPath3 = product.ImgPath3;
+                    }
+                    if(product.ImgPath1 != null)
+                    {
+                        dbProduct.ImgPath4 = product.ImgPath4;
+                    }
                 }
             }
             context.SaveChanges();
