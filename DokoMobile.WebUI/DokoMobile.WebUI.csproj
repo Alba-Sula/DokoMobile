@@ -428,6 +428,7 @@
     <Content Include="Views\Front\Gaming.cshtml" />
     <Content Include="Views\Front\Services.cshtml" />
     <Content Include="Views\Front\ProductItem.cshtml" />
+    <Content Include="Areas\Buy\Views\Cart\FinishedOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -435,6 +436,7 @@
     <Folder Include="Areas\Buy\Data\" />
     <Folder Include="Areas\Buy\Views\Shared\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>

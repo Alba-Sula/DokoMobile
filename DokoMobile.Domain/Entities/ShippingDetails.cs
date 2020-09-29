@@ -17,6 +17,7 @@ namespace DokoMobile.Domain.Entities
         public string Address { get; set; }
         [Required(ErrorMessage = "Phone Number is required")]
         [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber)]
         public int PhoneNumber { get; set; }
 
 

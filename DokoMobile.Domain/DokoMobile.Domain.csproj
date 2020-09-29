@@ -83,6 +83,9 @@
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Concrete\ApplicationDbContext.cs" />
     <Compile Include="Entities\OfferImg.cs" />
+    <Compile Include="Entities\OrderCart.cs" />
+    <Compile Include="Entities\Orders.cs" />
+    <Compile Include="Entities\OrderStatus.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductClick.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
@@ -118,6 +121,10 @@
     <Compile Include="Migrations\202009282118306_adminanalysis.Designer.cs">
       <DependentUpon>202009282118306_adminanalysis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009291600533_addingorders.cs" />
+    <Compile Include="Migrations\202009291600533_addingorders.Designer.cs">
+      <DependentUpon>202009291600533_addingorders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DbMigrationsConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -149,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009282118306_adminanalysis.resx">
       <DependentUpon>202009282118306_adminanalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009291600533_addingorders.resx">
+      <DependentUpon>202009291600533_addingorders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

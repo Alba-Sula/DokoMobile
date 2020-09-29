@@ -9,6 +9,7 @@
         vertical-align: middle;
     }
 </style>
+
 <h2 style="margin-left: 300px;">Your cart</h2>
 <table id="cartTable" class="table-condensed " style="width:50% ; margin-left: 300px;">
     <thead>
@@ -54,7 +55,7 @@
 </table>
 <div class="text-center">
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
-    @Html.ActionLink("Check Out", "Checkout",null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Check Out", "Checkout", new { Area = "Buy"}, new { @class = "btn btn-primary" })
 </div>
 
 

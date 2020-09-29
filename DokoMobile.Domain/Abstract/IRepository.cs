@@ -14,6 +14,17 @@ namespace DokoMobile.Domain.Abstract
         void SaveCategory(Category category);
         Category DeleteCategory(long categoryId);
 
+        //ordercart
+        IEnumerable<OrderCart> OrderCart { get; set; }
+        void SaveOrderCarts(OrderCart orderCart);
+
+        //orderstatus
+        IEnumerable<OrderStatus> OrderStatus { get; set; }
+
+        //orders
+        IEnumerable<Orders> Orders { get; set; }
+        void SaveOrder(Orders order);
+
         //brands
         IEnumerable<Brands> Brands { get; set; }
         void SaveBrands(Brands brand);

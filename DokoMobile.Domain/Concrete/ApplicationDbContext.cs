@@ -20,6 +20,9 @@ namespace DokoMobile.Domain
         public IDbSet<Product> Products { get; set; }
         public IDbSet<OfferImg> OfferImgs { get; set; }
         public IDbSet<ProductClick> Clicks { get; set; }
+        public IDbSet<OrderCart> OrderCart { get; set; }
+        public IDbSet<Orders> Orders { get; set; }
+        public IDbSet<OrderStatus> OrderStatus { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
