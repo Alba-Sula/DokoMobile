@@ -1,0 +1,17 @@
+﻿@model DokoMobile.WebUI.ViewModels.AdminAnalysisViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index admin </h2>
+
+@foreach (var item in Model.Users)
+{
+    <p>@item.UserName</p>
+}
+
+@foreach (var item in Model.PopularProducts)
+{
+    <p>@item.Product.Name with count @item.ClickCount</p>
+}

@@ -75,7 +75,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IOrderProccesser.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Concrete\EFRepository.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
@@ -85,6 +84,7 @@
     <Compile Include="Concrete\ApplicationDbContext.cs" />
     <Compile Include="Entities\OfferImg.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductClick.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Migrations\202009132216209_changingthedbschema.cs" />
     <Compile Include="Migrations\202009132216209_changingthedbschema.Designer.cs">
@@ -114,6 +114,10 @@
     <Compile Include="Migrations\202009270914179_changingbrands.Designer.cs">
       <DependentUpon>202009270914179_changingbrands.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009282118306_adminanalysis.cs" />
+    <Compile Include="Migrations\202009282118306_adminanalysis.Designer.cs">
+      <DependentUpon>202009282118306_adminanalysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DbMigrationsConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -142,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009270914179_changingbrands.resx">
       <DependentUpon>202009270914179_changingbrands.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009282118306_adminanalysis.resx">
+      <DependentUpon>202009282118306_adminanalysis.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

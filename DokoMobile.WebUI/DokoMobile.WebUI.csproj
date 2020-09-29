@@ -195,8 +195,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AnalysisController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\OfferImgController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Buy\BuyAreaRegistration.cs" />
@@ -212,6 +212,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AdminAnalysisViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\MainPgViewModel.cs" />
     <Compile Include="ViewModels\OfferImgViewModel.cs" />
@@ -258,13 +259,14 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Brands\List.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\List.cshtml" />
     <Content Include="Areas\Admin\Views\Products\List.cshtml" />
     <Content Include="Areas\Admin\Views\OfferImg\Index.cshtml" />
     <Content Include="Areas\Buy\Views\web.config" />
     <Content Include="Areas\Buy\Views\Cart\Index.cshtml" />
     <Content Include="Areas\Buy\Views\Cart\Summary.cshtml" />
     <Content Include="Areas\Buy\Views\Cart\Checkout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Analysis\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -405,7 +407,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
     <Content Include="Views\Front\MainPage.cshtml" />
     <Content Include="Areas\Admin\Views\OfferImg\Edit.cshtml" />
@@ -422,19 +423,19 @@
     <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
     <Content Include="Views\Shared\Search.cshtml" />
     <Content Include="Views\Shared\CustomSearch.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Product.cshtml" />
     <Content Include="Views\Front\Smartphone.cshtml" />
     <Content Include="Views\Front\Accessories.cshtml" />
     <Content Include="Views\Front\Gaming.cshtml" />
     <Content Include="Views\Front\Services.cshtml" />
+    <Content Include="Views\Front\ProductItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Buy\Data\" />
     <Folder Include="Areas\Buy\Views\Shared\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

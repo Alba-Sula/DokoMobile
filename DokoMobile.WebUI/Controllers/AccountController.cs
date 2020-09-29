@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DokoMobile.WebUI.Models;
 using DokoMobile.Domain.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
+using DokoMobile.Domain;
 //using DokoMobile.Domain.Entities;
 
 namespace DokoMobile.WebUI.Controllers
@@ -70,27 +72,49 @@ namespace DokoMobile.WebUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(model);
+                var user = await UserManager.FindAsync(model.Email, model.Password);
+                if (String.IsNullOrEmpty(returnUrl))
+                {
+                    if (UserManager.IsInRole(user.Id, "User"))
+                    {
+                        return RedirectToAction("MainPage", "Front");
+                    }
+                    //role Admin go to Admin page
+                    if (UserManager.IsInRole(user.Id, "Administrator"))
+                    {
+                        return RedirectToAction("Index", "Analysis", new { Area = "Admin" });
+                    }
+                }
+                else
+                {
+                    return RedirectToLocal(returnUrl);
+                }
             }
+            else
+            {
+                ModelState.AddModelError("", "Invalid username or password.");
+            }
+            return View(model);
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
-            }
+
+            //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            //switch (result)
+            //{
+            //    case SignInStatus.Success:
+            //        return RedirectToLocal(returnUrl);
+            //    case SignInStatus.LockedOut:
+            //        return View("Lockout");
+            //    case SignInStatus.RequiresVerification:
+            //        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            //    case SignInStatus.Failure:
+            //    default:
+            //        ModelState.AddModelError("", "Invalid login attempt.");
+            //        return View(model);
+            //}
         }
 
         //
@@ -153,10 +177,16 @@ namespace DokoMobile.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FullName = model.FullName };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FullName = model.FullName, RegisteredDay = DateTime.Now };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var context = new ApplicationDbContext();
+                    var userStore = new UserStore<ApplicationUser>(context);
+                    var userManager = new UserManager<ApplicationUser>(userStore);
+
+                    userManager.AddToRole(user.Id, "User");
+
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -165,7 +195,7 @@ namespace DokoMobile.WebUI.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("MainPage", "Front");
                 }
                 AddErrors(result);
             }

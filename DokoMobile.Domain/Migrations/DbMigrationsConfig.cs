@@ -27,6 +27,22 @@ namespace DokoMobile.Domain.Migrations
                 string adminRole = "Administrator";
 
                 CreateAdminUser(context, adminEmail, adminFullName, adminPassword, adminRole, adminUserName);
+
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                var roleCreateResult = roleManager.Create(new IdentityRole("User"));
+                if (!roleCreateResult.Succeeded)
+                {
+                    throw new Exception(string.Join("; ", roleCreateResult.Errors));
+                }
+            }
+
+            if (!context.Categories.Any())
+            {
+                context.Categories.Add(new Category() { CategoryId = 1, CategoryName = "Smartphone" });
+                context.Categories.Add(new Category() { CategoryId = 2, CategoryName = "Accessories" });
+                context.Categories.Add(new Category() { CategoryId = 3, CategoryName = "Gaming" });
+                context.Categories.Add(new Category() { CategoryId = 4, CategoryName = "Services" });
             }
         }
 
@@ -37,6 +53,7 @@ namespace DokoMobile.Domain.Migrations
                 Email = adminEmail,
                 FullName = adminFullName,
                 UserName = adminUserName,
+                RegisteredDay = DateTime.Now
             };
 
             var userStore = new UserStore<ApplicationUser>(context);
