@@ -12,6 +12,9 @@ using DokoMobile.WebUI.Models;
 using DokoMobile.Domain.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using DokoMobile.Domain;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
 //using DokoMobile.Domain.Entities;
 
 namespace DokoMobile.WebUI.Controllers
@@ -75,22 +78,42 @@ namespace DokoMobile.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.Email, model.Password);
-                if (String.IsNullOrEmpty(returnUrl))
+                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
+                if (result == SignInStatus.Success)
                 {
-                    if (UserManager.IsInRole(user.Id, "User"))
+                    if (String.IsNullOrEmpty(returnUrl))
                     {
-                        return RedirectToAction("MainPage", "Front");
+                        if (UserManager.IsInRole(user.Id, "User"))
+                        {
+                            return RedirectToAction("MainPage", "Front");
+                        }
+                        //role Admin go to Admin page
+                        if (UserManager.IsInRole(user.Id, "Administrator"))
+                        {
+                            return RedirectToAction("Index", "Analysis", new { Area = "Admin" });
+                        }
                     }
-                    //role Admin go to Admin page
-                    if (UserManager.IsInRole(user.Id, "Administrator"))
+                    else
                     {
-                        return RedirectToAction("Index", "Analysis", new { Area = "Admin" });
+                        return RedirectToLocal(returnUrl);
                     }
+                }
+                else if (result == SignInStatus.LockedOut)
+                {
+                    return View("Lockout");
+                }
+                else if (result == SignInStatus.RequiresVerification)
+                {
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 }
                 else
                 {
-                    return RedirectToLocal(returnUrl);
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
                 }
+
+
             }
             else
             {
@@ -184,8 +207,13 @@ namespace DokoMobile.WebUI.Controllers
                     var context = new ApplicationDbContext();
                     var userStore = new UserStore<ApplicationUser>(context);
                     var userManager = new UserManager<ApplicationUser>(userStore);
+                    string userEmail = user.Email;
 
                     userManager.AddToRole(user.Id, "User");
+
+                    string emailbody = "<p>Hello " + user.FullName + ",</p><br /><p>Thank you for registering in our platform!</p><p>If you place your first order (Smarphone) within 24h we will give you accessories for free!</p><p><strong>!!This is valid only within 24h from now!!</strong></p><p>Regards, Doko Mobile</p>";
+
+                    var send = SendRegisterEmail(userEmail, "New Order", emailbody);
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
@@ -202,6 +230,34 @@ namespace DokoMobile.WebUI.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        public bool SendRegisterEmail(string toEmail, string subject, string emailBody)
+        {
+            try
+            {
+                string senderEmail = System.Configuration.ConfigurationManager.AppSettings["senderEmail"].ToString();
+                string senderPassword = System.Configuration.ConfigurationManager.AppSettings["senderPassword"].ToString();
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                client.EnableSsl = true;
+                client.Timeout = 100000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(senderEmail, senderPassword);
+
+                MailMessage email = new MailMessage(senderEmail, toEmail, subject, emailBody);
+                email.IsBodyHtml = true;
+                email.BodyEncoding = UTF8Encoding.UTF8;
+
+                client.Send(email);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                string ecept = ex.ToString();
+                return false;
+            }
         }
 
         //

@@ -18,8 +18,31 @@ namespace DokoMobile.Domain.Concrete
         public IEnumerable<Category> Categories { get { return context.Categories; } set { } }
         public IEnumerable<OfferImg> OfferImgs { get { return context.OfferImgs; } set { } }
         public IEnumerable<ProductClick> Clicks { get { return context.Clicks; } set { } }
+        public IEnumerable<OrderCart> OrderCart { get { return context.OrderCart; } set { } }
+        public IEnumerable<Orders> Orders { get { return context.Orders; } set { } }
+        public IEnumerable<OrderStatus> OrderStatus { get { return context.OrderStatus; } set { } }
         public IEnumerable<ApplicationUser> ApplicationUser { get { return context.Users; } set { } }
 
+
+        //order cart
+        public void SaveOrderCarts(OrderCart orderCart)
+        {
+            if (orderCart.OrderCartId == 0)
+            {
+                context.OrderCart.Add(orderCart);
+            }
+            context.SaveChanges();
+        }
+
+        //order
+        public void SaveOrder(Orders orders)
+        {
+            if (orders.OrderId == 0)
+            {
+                context.Orders.Add(orders);
+            }
+            context.SaveChanges();
+        }
 
         //categories
         public void SaveCategory(Category category)

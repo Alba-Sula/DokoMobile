@@ -44,6 +44,13 @@ namespace DokoMobile.Domain.Migrations
                 context.Categories.Add(new Category() { CategoryId = 3, CategoryName = "Gaming" });
                 context.Categories.Add(new Category() { CategoryId = 4, CategoryName = "Services" });
             }
+
+            if (!context.OrderStatus.Any())
+            {
+                context.OrderStatus.Add(new OrderStatus() { OrderStatusId = 1, OrderStatusName = "Deliver" });
+                context.OrderStatus.Add(new OrderStatus() { OrderStatusId = 2, OrderStatusName = "Delivering" });
+                context.OrderStatus.Add(new OrderStatus() { OrderStatusId = 3, OrderStatusName = "Delivered" });
+            }
         }
 
         private void CreateAdminUser(ApplicationDbContext context, string adminEmail, string adminFullName, string adminPassword, string adminRole, string adminUserName)
