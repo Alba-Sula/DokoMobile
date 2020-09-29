@@ -4,14 +4,49 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Dashboard - Home</h2>
+<h2 style="margin-bottom: 35px;">Dashboard - Home</h2>
+<h2 class="text-center">
+    Todays registered users
+</h2>
+<table class="table">
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+        <tr>
+            <td>
+                <p>@item.UserName</p>
+            </td>
+            <td>
+                <p>@item.FullName</p>
+            </td>
+        </tr>
 
-@foreach (var item in Model.Users)
-{
-    <p>@item.UserName</p>
-}
+        }
 
-@foreach (var item in Model.PopularProducts)
-{
-    <p>@item.Product.Name with count @item.ClickCount</p>
-}
+    </tbody>
+</table>
+
+
+
+
+<section class="generated-products">
+    <h2 class="text-center">
+        Most clicked products for today
+    </h2>
+    <div class="grid-design w-100">
+        @foreach (var item in Model.PopularProducts)
+        {
+            <a href="/Front/ProductItem?id=@item.ProductId">
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src=@item.Product.ImgPath1 />
+                    </div>
+                    <div class="product-details">
+                        <p class="product-name">@item.Product.Name &nbsp; @item.Product.Brands.BrandName</p>
+                    </div>
+                    <span class="text-center" style="color: #333333;">This Product was clicked @item.ClickCount time</span>
+                </div>
+            </a>
+        }
+    </div>
+</section>
