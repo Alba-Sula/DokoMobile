@@ -26,7 +26,7 @@ namespace DokoMobile.WebUI.Areas.Admin.Controllers
 
 
             var clicks = repository.Clicks;
-            var clickedProductsToday = clicks.Where(c => c.DateClicked > dt && c.DateClicked <= DateTime.Now).OrderByDescending(c => c.ClickCount).Take(2);
+            var clickedProductsToday = clicks.Where(c => c.DateClicked > dt && c.DateClicked <= DateTime.Now).OrderByDescending(c => c.ClickCount).Take(4);
             Product temp;
             List<Product> products = new List<Product>();
             foreach (var item in clickedProductsToday)
@@ -34,6 +34,8 @@ namespace DokoMobile.WebUI.Areas.Admin.Controllers
                 temp = ToProduct(item);
                 products.Add(temp);
             }
+
+            var todaysOrders = repository.Orders.Where(o => o.OrderDate > dt && o.OrderDate <= DateTime.Now);
 
 
             //this is for the brands and it is to be fixed
@@ -46,7 +48,8 @@ namespace DokoMobile.WebUI.Areas.Admin.Controllers
             return View(new AdminAnalysisViewModel()
             {
                 Users = users,
-                PopularProducts = clickedProductsToday//products.AsEnumerable(),
+                PopularProducts = clickedProductsToday,
+                TodaysOrders = todaysOrders
             });
         }
 

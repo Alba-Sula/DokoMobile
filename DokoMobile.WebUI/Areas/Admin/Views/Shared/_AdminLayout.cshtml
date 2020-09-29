@@ -13,29 +13,36 @@
 <body>
     <main class="admin-page-wrapper">
         <section class="side-nav">
-            <a>
+            <a href="/Admin/Analysis/Index">
                 <img src="~/StaticImages/home.svg" />
                 <span>Home</span>
             </a>
-            <a>
+            <a href="/Admin/Brands/List">
                 <img src="~/StaticImages/flyers.svg" />
                 <span>Brands</span>
             </a>
-            <a>
+            <a href="/Admin/Products/List">
                 <img src="~/StaticImages/box.svg" />
                 <span>Products</span>
             </a>
-            <a>
+            <a href="/Admin/OfferImg/Index">
                 <img src="~/StaticImages/carousel.svg" />
                 <span>Carousel</span>
             </a>
-            <a>
+            <a href="/Admin/Orders/Index">
                 <img src="~/StaticImages/list.svg" />
                 <span>Orders</span>
             </a>
-            <a>
-                <span>Log Out</span>
-            </a>
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                }
+            }
+            
         </section>
         <section class="admin-page">
             @RenderBody()

@@ -267,6 +267,7 @@
     <Content Include="Areas\Buy\Views\Cart\Checkout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Analysis\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -431,7 +432,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
     <Content Include="Views\Shared\Search.cshtml" />
     <Content Include="Views\Shared\CustomSearch.cshtml" />
     <Content Include="Views\Front\Smartphone.cshtml" />
