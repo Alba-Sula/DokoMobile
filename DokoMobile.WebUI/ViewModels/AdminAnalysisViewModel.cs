@@ -13,8 +13,8 @@ namespace DokoMobile.WebUI.ViewModels
         public IEnumerable<ApplicationUser> Users { get; set; }
         public IEnumerable<Product> ProductBrands { get; set; }
         public IEnumerable<ProductClick> PopularProducts { get; set; }
+        public IEnumerable<Orders> TodaysOrders { get; set; }
 
-        //do not forget the orders here
 
     }
 }

@@ -15,3 +15,8 @@
 {
     <p>@item.Product.Name with count @item.ClickCount</p>
 }
+
+@foreach (var item in Model.TodaysOrders)
+{
+    <p>Today's order by: @item.FullName</p>
+}
