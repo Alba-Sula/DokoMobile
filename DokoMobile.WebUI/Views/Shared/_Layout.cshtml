@@ -23,10 +23,18 @@
         </div>
         <div class="nav-action-btn">
             @Html.Action("Summary", "Cart", new { area = "Buy" })
-            <div class="action-btn">
-                <img src="~/StaticImages/user-svg.svg" />
+            @if (Request.IsAuthenticated)
+            {
                 @Html.Partial("_LoginPartial")
-            </div>
+            }
+            else
+            {
+                <div class="action-btn">
+                    <img src="~/StaticImages/user-svg.svg" />
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+            }
         </div>
     </nav>
     <div class="search-result">

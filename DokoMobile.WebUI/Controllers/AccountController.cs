@@ -480,7 +480,7 @@ namespace DokoMobile.WebUI.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("MainPage", "Front");
         }
 
         //
