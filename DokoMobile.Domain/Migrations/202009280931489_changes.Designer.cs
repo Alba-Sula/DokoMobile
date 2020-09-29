@@ -7,13 +7,13 @@ namespace DokoMobile.Domain.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class changingbrands : IMigrationMetadata
+    public sealed partial class changes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changingbrands));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(changes));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009270914179_changingbrands"; }
+            get { return "202009280931489_changes"; }
         }
         
         string IMigrationMetadata.Source

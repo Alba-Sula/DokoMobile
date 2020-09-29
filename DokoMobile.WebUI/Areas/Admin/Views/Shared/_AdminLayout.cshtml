@@ -11,26 +11,37 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        @Html.ActionLink("Doko Mobile", "Index", "Analysis", new { area = "Admin" }, new { @class = "navbar-brand" })
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-            </div>
-            @Html.Partial("_LoginPartial")
-        </div>
-    </nav>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-    </div>
-
+    <main class="admin-page-wrapper">
+        <section class="side-nav">
+            <a>
+                <img src="~/StaticImages/home.svg" />
+                <span>Home</span>
+            </a>
+            <a>
+                <img src="~/StaticImages/flyers.svg" />
+                <span>Brands</span>
+            </a>
+            <a>
+                <img src="~/StaticImages/box.svg" />
+                <span>Products</span>
+            </a>
+            <a>
+                <img src="~/StaticImages/carousel.svg" />
+                <span>Carousel</span>
+            </a>
+            <a>
+                <img src="~/StaticImages/list.svg" />
+                <span>Orders</span>
+            </a>
+            <a>
+                <span>Log Out</span>
+            </a>
+        </section>
+        <section class="admin-page">
+            @RenderBody()
+            <hr />
+        </section>
+    </main>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

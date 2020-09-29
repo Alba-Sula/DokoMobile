@@ -1,15 +1,117 @@
 ﻿@model IEnumerable<DokoMobile.Domain.Entities.Product>
 
-<p>hiiii custom search here</p>
 
 
-@foreach (var item in Model)
-{
-    <div>
-        <p>Name: @item.Name</p>
-        <p>Brand: @item.Brands.BrandName</p>
-        <p>Price: @item.Price</p>
-        <img src=@item.ImgPath1 width="100" height="100" />
-        <p>Discount: @item.HasDiscount</p>
+<div class="searched-items-wrapper" id="ajax-search-replace">
+    @if (!Model.Any())
+    {
+        <div class="searched-items-error">
+            <p>There aro no such products</p>
+        </div>
+    }
+
+    <div class="searched-items">
+        @foreach (var item in Model)
+        {
+
+            <div class="product-item">
+                <div class="product-item-img">
+                    <img src=@item.ImgPath1 />
+                </div>
+                <div class="product-details">
+                    <p class="product-name">@item.Name &nbsp; @item.Brands.BrandName</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="product-price">@item.Price $</p>
+                        @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
+                        {
+                            @Html.Hidden("productId", item.ProductId)
+                            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                            <input type="submit" class="btn btn-primary" value="Add to cart" />
+                        }
+                    </div>
+                </div>
+            </div>
+
+        }
     </div>
-}
+    @*<table>
+        <tr>
+            <td colspan="9">
+                @{
+                    int PrevPageNo = Model.PageNo - 1;
+                    if (PrevPageNo <= 0)
+                    {
+                        PrevPageNo = 1;
+                    }
+
+                    int NextPageNo = Model.PageNo + 1;
+                    if (NextPageNo > Model.NoOfPages)
+                    {
+                        NextPageNo = Model.NoOfPages;
+                    }
+                }
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="/Front/Search?PageNo=@PrevPageNo">Prev</a>
+                    </li>
+                    @for (int i = 0; i < Model.NoOfPages; i++)
+                    {
+                        if ((i + 1) == Model.PageNo)
+                        {
+                            <li class="page-item active">
+                                <a class="page-link" href="/Front/Search?PageNo=@(i + 1)">@( i + 1)</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="/Front/Search?PageNo=@(i + 1)">@( i + 1)</a>
+                            </li>
+                        }
+                    }
+                    <li class="page-item">
+                        <a class="page-link" href="/Front/Search?PageNo=@NextPageNo">Next</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>*@
+</div>
+
+
+
+
+@*<div class="searched-items">
+        <div class="close-search">
+            <img src="~/StaticImages/up-arrow.svg" />
+        </div>
+        @foreach (var item in Model)
+        {
+
+            <div class="product-item">
+                <div class="product-item-img">
+                    <img src=@item.ImgPath1 />
+                </div>
+                <div class="product-details">
+                    <p class="product-name">@item.Name &nbsp; @item.Brands.BrandName</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="product-price">@item.Price $</p>
+                        @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
+                        {
+                            @Html.Hidden("productId", item.ProductId)
+                            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                            <input type="submit" class="btn btn-primary" value="Add to cart" />
+                        }
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>*@
+
+<script>
+    let closeSearch = document.querySelector(".close-search img");
+    closeSearch.addEventListener("click", function () {
+        document.querySelector(".page").style.transform = "translateY(0px)";
+    });
+</script>

@@ -17,58 +17,78 @@
         </div>
         <div class="nav-search">
             <form class="form-inline" action="/Front/Search">
-                <input type="text" placeholder="Search Product" name="search" value="@ViewBag.search" />
+                <input type="text" placeholder="Search Product" class="search-bar" name="search" value="@ViewBag.search" />
                 <button type="submit">Search</button>
             </form>
         </div>
         <div class="nav-action-btn">
             @Html.Action("Summary", "Cart", new { area = "Buy" })
-            <div class="action-btn">
-                <img src="~/StaticImages/user-svg.svg" />
+            @if (Request.IsAuthenticated)
+            {
                 @Html.Partial("_LoginPartial")
-            </div>
+            }
+            else
+            {
+                <div class="action-btn">
+                    <img src="~/StaticImages/user-svg.svg" />
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+            }
         </div>
     </nav>
-    <div>
+    <div class="search-result">
+        <div>
+            <div class="close-search">
+                <img src="~/StaticImages/up-arrow.svg" />
+            </div>
+        </div>
         @* Do not forget the search here its wonderfulllll *@
         @*@Html.Action("Search", "Front")*@
+        @*@Html.Partial("Search")*@
     </div>
-    <div>
-        @RenderBody()
+    <div class="page">
+
+        <div>
+            @RenderBody()
+        </div>
+        <footer>
+            <div class="support">
+                <h2 class="text-center">Do You Need Anything ?</h2>
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+                    eos qui ratione voluptatem sequi nesciunt.
+                </p>
+                <div class="contact-adresse">
+                    <h5>Rr. Teodor Keko</h5>
+                    <h5>0660000001 / doko@gmail.com</h5>
+                </div>
+            </div>
+            <div class="social-links-cover"></div>
+
+        </footer>
     </div>
-    <footer>
-        <div class="support">
-            <h2 class="text-center">Do You Need Anything ?</h2>
-            <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-                eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <div class="contact-adresse">
-                <h5>Rr. Teodor Keko</h5>
-                <h5>0660000001 / doko@gmail.com</h5>
-            </div>
+    <div class="social-media">
+        <h2>Follow Us</h2>
+        <div class="social-links">
+            <a href="#">
+                <img src="~/StaticImages/youtube-svg.svg" />
+            </a>
+            <a href="#">
+                <img src="~/StaticImages/insta-svg.svg" />
+            </a>
+            <a href="#">
+                <img src="~/StaticImages/facebook-svg.svg" />
+            </a>
+            <a href="#">
+                <img src="~/StaticImages/twitter-svg.svg" />
+            </a>
         </div>
-        <div class="social-media">
-            <h2>Follow Us</h2>
-            <div class="social-links">
-                <a href="#">
-                    <img src="~/StaticImages/youtube-svg.svg" />
-                </a>
-                <a href="#">
-                    <img src="~/StaticImages/insta-svg.svg" />
-                </a>
-                <a href="#">
-                    <img src="~/StaticImages/facebook-svg.svg" />
-                </a>
-                <a href="#">
-                    <img src="~/StaticImages/twitter-svg.svg" />
-                </a>
-            </div>
-        </div>
-    </footer>
+    </div>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/main-js.js"></script>
 </body>
 </html>

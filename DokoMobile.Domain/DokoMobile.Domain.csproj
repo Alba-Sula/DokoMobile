@@ -113,9 +113,9 @@
     <Compile Include="Migrations\202009252044480_migr.Designer.cs">
       <DependentUpon>202009252044480_migr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009270914179_changingbrands.cs" />
-    <Compile Include="Migrations\202009270914179_changingbrands.Designer.cs">
-      <DependentUpon>202009270914179_changingbrands.cs</DependentUpon>
+    <Compile Include="Migrations\202009280931489_changes.cs" />
+    <Compile Include="Migrations\202009280931489_changes.Designer.cs">
+      <DependentUpon>202009280931489_changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202009282118306_adminanalysis.cs" />
     <Compile Include="Migrations\202009282118306_adminanalysis.Designer.cs">
@@ -151,8 +151,8 @@
     <EmbeddedResource Include="Migrations\202009252044480_migr.resx">
       <DependentUpon>202009252044480_migr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009270914179_changingbrands.resx">
-      <DependentUpon>202009270914179_changingbrands.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009280931489_changes.resx">
+      <DependentUpon>202009280931489_changes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009282118306_adminanalysis.resx">
       <DependentUpon>202009282118306_adminanalysis.cs</DependentUpon>

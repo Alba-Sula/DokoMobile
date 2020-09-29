@@ -5,5 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Gaming</h2>
+<h2 class="category-title">Gaming</h2>
+<section class="generated-products">
+    <div class="grid-design w-100">
+        @foreach (var item in Model)
+        {
+            <a href="/Front/ProductItem?id=@item.ProductId">
+                <div class="product-item">
+                    <div class="product-item-img">
+                        <img src=@item.ImgPath1 />
+                    </div>
+                    <div class="product-details">
+                        <p class="product-name">@item.Name &nbsp; @item.Brands.BrandName</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="product-price">@item.Price $</p>
+                            @using (Html.BeginForm("AddToCart", "Cart", new { area = "Buy" }))
+                            {
+                                @Html.Hidden("productId", item.ProductId)
+                                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                <input type="submit" class="btn btn-primary" value="Add to cart" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        }
+    </div>
+</section>
 
