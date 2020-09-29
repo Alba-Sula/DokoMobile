@@ -97,6 +97,13 @@ namespace DokoMobile.Domain.Concrete
                     dbProduct.Price = product.Price;
                     dbProduct.Color = product.Color;
                     dbProduct.Description = product.Description;
+                    dbProduct.Display = product.Display;
+                    dbProduct.RAM = product.RAM;
+                    dbProduct.Processor = product.Processor;
+                    dbProduct.Batery = product.Batery;
+                    dbProduct.OS = product.OS;
+                    dbProduct.Memory = product.Memory;
+
                     if (product.ImgPath1 != null)
                     {
                         dbProduct.ImgPath1 = product.ImgPath1;

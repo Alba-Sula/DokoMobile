@@ -40,7 +40,7 @@
                         <input type="number" name="searchMemory" />
                     </div>
                 </div>
-                <input type="submit" name="Search" value="Search" />
+                <input type="submit" class="search-btn" name="Search" value="Search" />
             }
 
         </div>
@@ -49,10 +49,11 @@
     <div class="searched-items-wrapper" id="ajax-search-replace">
         @if (!Model.Products.Any())
         {
-            <div>
+            <div class="searched-items-error">
                 <p>There aro no such products</p>
             </div>
         }
+
         <div class="searched-items">
             @foreach (var item in Model.Products)
             {
