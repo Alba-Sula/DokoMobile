@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace DokoMobile.WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class BrandsController : Controller
     {
         // GET: Admin/Brandss

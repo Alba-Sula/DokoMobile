@@ -14,7 +14,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace DokoMobile.WebUI.Areas.Buy.Controllers
-{
+{ 
+//    [Authorize(Roles ="User")]
     public class CartController : Controller
     {
         private IRepository repo;
@@ -61,7 +62,7 @@ namespace DokoMobile.WebUI.Areas.Buy.Controllers
 
             return RedirectToAction("Index", new { returnUrl });
         }
-
+        [Authorize(Roles = "User")]
         public ActionResult Checkout()
         {
             return View(new ShippingDetails());

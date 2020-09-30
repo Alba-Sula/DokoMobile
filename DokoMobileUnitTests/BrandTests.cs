@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using DokoMobile.Domain.Abstract;
 using DokoMobile.Domain.Entities;
+using DokoMobile.WebUI.Areas.Admin.Controllers;
 using DokoMobile.WebUI.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

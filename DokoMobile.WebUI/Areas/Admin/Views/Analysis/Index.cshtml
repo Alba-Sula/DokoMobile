@@ -44,9 +44,33 @@
                     <div class="product-details">
                         <p class="product-name">@item.Product.Name &nbsp; @item.Product.Brands.BrandName</p>
                     </div>
-                    <span class="text-center" style="color: #333333;">This Product was clicked @item.ClickCount time</span>
+                    <span class="text-center" style="color: #333333;">This Product was clicked @item.ClickCount times</span>
                 </div>
             </a>
         }
+    </div>
+</section>
+
+<section>
+    <h2 class="text-center">
+        New orders for today
+    </h2>
+    <div>
+        @if (!Model.TodaysOrders.Any())
+        {
+            <p class="text-center">There are no orders for today</p>
+        }
+        else
+        {
+            <p class="text-center">
+                Users that have ordered for today
+            </p>
+            foreach (var item in Model.TodaysOrders)
+            {
+                <p>@item.FullName</p>
+                <br />
+            }
+        }
+
     </div>
 </section>

@@ -2,16 +2,16 @@
 
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Edit/Create Products</h2>
 
 @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Product</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ProductId)
@@ -87,7 +87,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CategoryId, new SelectList(ViewBag.Categories, "CategoryId", "CategoryName"), new { htmlAttributes = new { @class = "form-control" } })
+                 @Html.DropDownListFor(model => model.CategoryId, new SelectList(ViewBag.Categories, "CategoryId", "CategoryName"), new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
             </div>
         </div>

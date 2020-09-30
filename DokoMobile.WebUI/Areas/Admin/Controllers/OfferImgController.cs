@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DokoMobile.WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class OfferImgController : Controller
     {
         private IRepository repository;

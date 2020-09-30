@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace DokoMobile.WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class ProductsController : Controller
     {
         private IRepository repository;

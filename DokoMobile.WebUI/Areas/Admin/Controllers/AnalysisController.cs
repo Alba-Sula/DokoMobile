@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DokoMobile.WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AnalysisController : Controller
     {
 
@@ -38,9 +39,10 @@ namespace DokoMobile.WebUI.Areas.Admin.Controllers
             var todaysOrders = repository.Orders.Where(o => o.OrderDate > dt && o.OrderDate <= DateTime.Now);
 
 
+
+
+
             //this is for the brands and it is to be fixed
-
-
             var weekClicks = repository.Clicks.Where(c => c.DateClicked < DateTime.Now && c.DateClicked >= DateTime.Now.AddDays(-7));
             var apple = weekClicks.Where(a => a.Product.Brands.BrandName == "Iphone");
             long appleCount = apple.Count();
