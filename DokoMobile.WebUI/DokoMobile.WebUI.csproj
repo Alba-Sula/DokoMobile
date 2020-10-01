@@ -205,8 +205,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\ApiOrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\AnalysisController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OfferImgController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
@@ -285,6 +285,7 @@
     <Content Include="Areas\Admin\Views\Analysis\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
     <Content Include="Areas\Buy\Views\Shared\_LayoutBuy.cshtml" />
+    <Content Include="Areas\Admin\Views\Api\View.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\carousel.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

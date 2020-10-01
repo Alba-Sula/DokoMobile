@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<button id="getOrders"> Get Orders</button>
+
+<table class="table tableOrders">
+    <tr>
+        <th>Ordered by</th>
+        <th>Order Email</th>
+        <th>Order Date</th>
+        <th>Order Status</th>
+    </tr>
+</table>
+
+<script>
+    $("#getOrders").click(() => {
+        $.ajax({
+            type: "GET", url: "/Admin/Api/GetOrders", success: (response) => {
+                for (var i = 0; i < response.length; i++) {
+                    var order = response[i];
+
+                    var ordr = "<tr><td>" + order.FullName + "</td> <td>" + order.Email + "</td> <td>" + order.Email + "</td> <td>" + order.OrderStatusId + "</td></tr>";
+                    $(".tableOrders").append(ordr);
+                }
+            }, error: (err) => {
+                alert(err);
+                console.log(err);
+            }
+
+        });
+    });
+</script>
